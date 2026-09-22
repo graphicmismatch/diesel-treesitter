@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "diesel",
+      "camelcase": "Diesel",
+      "scope": "source.diesel",
+      "path": ".",
+      "file-types": ["dsl"],
+      "highlights": ["queries/highlights.scm"],
+      "locals": ["queries/locals.scm"],
+      "injections": ["queries/injections.scm"],
+      "injection-regex": "^diesel$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Diesel grammar for tree-sitter - the Petroleum synthesizer patch language (.dsl)",
+    "authors": [{ "name": "Petroleum" }]
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": false,
+    "swift": false,
+    "zig": false
+  }
+}

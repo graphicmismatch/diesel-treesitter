@@ -1,0 +1,176 @@
+================================================================================
+blobs
+================================================================================
+
+patch {
+    "Granular Player" granular_player1 { x = 0; y = 0; sample = "s1"; }
+}
+
+sample s1 = b64"AAECAwQFBgc=";
+data d1 = b64"
+AAEC
+AwQF";
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (patch
+    body: (patch_body
+      (node
+        type: (string)
+        name: (identifier)
+        body: (node_body
+          (field
+            key: (identifier)
+            value: (number))
+          (field
+            key: (identifier)
+            value: (number))
+          (field
+            key: (identifier)
+            value: (string))))))
+  (blob_declaration
+    id: (identifier)
+    value: (blob))
+  (blob_declaration
+    id: (identifier)
+    value: (blob)))
+
+================================================================================
+macros
+================================================================================
+
+patch {
+    Constant constant1 { x = 0; y = 0; }
+    macro "cutoff" -> constant1(20, 20000);
+    macro "gate" -> constant1(0, 1);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (patch
+    body: (patch_body
+      (node
+        type: (identifier)
+        name: (identifier)
+        body: (node_body
+          (field
+            key: (identifier)
+            value: (number))
+          (field
+            key: (identifier)
+            value: (number))))
+      (macro
+        name: (string)
+        target: (identifier)
+        min: (number)
+        max: (number))
+      (macro
+        name: (string)
+        target: (identifier)
+        min: (number)
+        max: (number)))))
+
+================================================================================
+minimal patch
+================================================================================
+
+patch {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (patch
+    body: (patch_body)))
+
+================================================================================
+named patch with fields
+================================================================================
+
+patch "Bass Lead" {
+    version = 6;
+    origin = { category = "bass", seed = 12 };
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (patch
+    name: (string)
+    body: (patch_body
+      (field
+        key: (identifier)
+        value: (number))
+      (field
+        key: (identifier)
+        value: (object
+          (pair
+            key: (identifier)
+            value: (string))
+          (pair
+            key: (identifier)
+            value: (number)))))))
+
+================================================================================
+nodes and connections
+================================================================================
+
+patch {
+    Phasor phasor1 {
+        x = 0; y = 0;
+        .frequency = 440;
+    }
+    "Audio Out" audio_out1 { x = 260; y = 0; }
+    Constant k1;
+    phasor1.out -> audio_out1.in;
+    k1.out -> phasor1."frequency";
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (patch
+    body: (patch_body
+      (node
+        type: (identifier)
+        name: (identifier)
+        body: (node_body
+          (field
+            key: (identifier)
+            value: (number))
+          (field
+            key: (identifier)
+            value: (number))
+          (port_value
+            port: (identifier)
+            value: (number))))
+      (node
+        type: (string)
+        name: (identifier)
+        body: (node_body
+          (field
+            key: (identifier)
+            value: (number))
+          (field
+            key: (identifier)
+            value: (number))))
+      (node
+        type: (identifier)
+        name: (identifier))
+      (connection
+        from: (port_ref
+          node: (identifier)
+          port: (identifier))
+        to: (port_ref
+          node: (identifier)
+          port: (identifier)))
+      (connection
+        from: (port_ref
+          node: (identifier)
+          port: (identifier))
+        to: (port_ref
+          node: (identifier)
+          port: (string))))))
+

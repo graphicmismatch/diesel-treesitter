@@ -1,0 +1,20 @@
+{
+  "name": "tree-sitter-diesel",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for Diesel, the Petroleum synthesizer patch language (.dsl)",
+  "main": "bindings/node",
+  "keywords": ["parser", "lexer", "tree-sitter", "diesel", "petroleum"],
+  "license": "MIT",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.diesel",
+      "file-types": ["dsl"],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^diesel$"
+    }
+  ]
+}
